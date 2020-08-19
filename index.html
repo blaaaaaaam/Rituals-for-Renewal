@@ -29,13 +29,15 @@
         padding: 0;
         box-sizing: border-box;
       }
-      body { overflow: hidden }
-      .container {
+      body {
         width: 100vw;
         height: 100vh;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
         background: linear-gradient(180deg, rgba(193,193,242,1) 0%, rgba(255,183,239,1) 75%, rgba(255,162,164,1) 95%, rgba(255,175,145,1) 100%);
       }
       img {
@@ -60,9 +62,7 @@
     </style>
   </head>
   <body>
-    <div class="container">
-      <img src="assets/RFR_logo_white.svg" alt="Rituals for Renewal circular logo">
-      <a href="https://www.instagram.com/ritualsforrenewal/" target="_blank">Instagram</a>
-    </div>
+    <img src="assets/RFR_logo_white.svg" alt="Rituals for Renewal circular logo">
+    <a href="https://www.instagram.com/ritualsforrenewal/" target="_blank">Instagram</a>
   </body>
 </html>
