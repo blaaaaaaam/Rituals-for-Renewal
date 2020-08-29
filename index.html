@@ -25,29 +25,33 @@
         from { transform: rotate(0deg) }
         to { transform: rotate(360deg) }
       }
+      html,
+      body {
+        height: 100%;
+      }
       * {
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
         box-sizing: border-box;
         color: inherit;
       }
       body {
         width: 100vw;
-        height: 100vh;
-        min-height: 100vh;
-        min-height: -webkit-fill-available;
         overflow: hidden;
+        background: linear-gradient(180deg, rgba(193,193,242,1) 0%, rgba(255,183,239,1) 75%, rgba(255,162,164,1) 95%, rgba(255,175,145,1) 100%);
+        font: 20px 'AuthenticSans', sans-serif;
+        color: white;
+      }
+      main {
+        min-height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(180deg, rgba(193,193,242,1) 0%, rgba(255,183,239,1) 75%, rgba(255,162,164,1) 95%, rgba(255,175,145,1) 100%);
-        font: 22px 'AuthenticSans', sans-serif;
-        color: white;
       }
       img {
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         max-width: 75vw;
         max-height: 75vh;
         animation: rotate 540s linear infinite;
@@ -55,13 +59,19 @@
         user-select: none;
         -webkit-user-select: none;
       }
-      p { position: absolute }
-      a { transition: 1s; }
+      p {
+        position: absolute;
+        max-width: 60vw;
+        text-align: center;
+      }
+      a { transition: 1s; text-decoration: none }
       a:hover { opacity: .3 }
     </style>
   </head>
   <body>
-    <img src="assets/RFR_logo_white.svg" alt="Rituals for Renewal circular logo">
-    <p>Unfolding over <a href="https://www.instagram.com/ritualsforrenewal/" target="_blank">Instagram</a> right now.</p>
+    <main>
+      <img src="assets/RFR_logo_white.svg" alt="Rituals for Renewal circular logo">
+      <p>Unfolding over <a href="https://www.instagram.com/ritualsforrenewal/" target="_blank">Instagram</a> right now.</p>
+    </main>
   </body>
 </html>
