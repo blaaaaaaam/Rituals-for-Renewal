@@ -109,6 +109,7 @@ figure, figure img, figure video { width: 100%; height: auto }
   html { font-size: 2vw }
   body { margin-top: 100vh }
   .logo { width: 100vw }
+  main { grid-template-columns: 1fr; }
   .content { margin-top: -200vh }
   .intro { margin-bottom: 100vh }
   section ul { padding-top: 8vh }
@@ -117,6 +118,7 @@ figure, figure img, figure video { width: 100%; height: auto }
 }
 
 @media (max-width:759px) {
+  .intro { padding: 20px }
   .desktop { display: none }
   .mobile { display: block }
 }
