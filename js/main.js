@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// Fire a resize event to get the height of videos
 	const videos = Array.from(document.querySelectorAll('video')).map(
-		v => v.addEventListener('loadeddata', (event) => {
+		v => v.addEventListener('loadedmetadata', (event) => {
 			let loaded = document.createEvent('HTMLEvents')
 			loaded.initEvent('resize', true, false);
 			document.dispatchEvent(loaded);
