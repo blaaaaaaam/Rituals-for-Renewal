@@ -1,5 +1,10 @@
 window.addEventListener('DOMContentLoaded', () => {
 
+	// Lazy Load
+	const el = document.querySelectorAll('video')
+	const lozadObserver = lozad(el)
+	lozadObserver.observe()
+
 	// Change Background
 	let options = {
 		rootMargin: '-24.99% 0px -75% 0px',
@@ -16,12 +21,13 @@ window.addEventListener('DOMContentLoaded', () => {
 				document.querySelector(`nav li a[href="#${id}"]`).classList.remove('active')
 				document.getElementsByClassName(gradient)[0].style.opacity = 0
 			}
-		});
-	},options);
+		})
+	},options)
 
 	document.querySelectorAll('section[id]').forEach((section) => {
-		observer.observe(section);
+		observer.observe(section)
 	});
+
 
 	// Initialise Plyrs
 	const players = Array.from(document.querySelectorAll('.player')).map(
@@ -38,7 +44,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	// Initialise carousels
 	const carousels = Array.from(document.querySelectorAll('.carousel')).map(
 		c => new Flickity(c, {
-			imagesLoaded: true
+			imagesLoaded: true,
+			lazyLoad: true
 		})
 	)
 
@@ -46,8 +53,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	const videos = Array.from(document.querySelectorAll('video')).map(
 		v => v.addEventListener('loadedmetadata', (event) => {
 			let loaded = document.createEvent('HTMLEvents')
-			loaded.initEvent('resize', true, false);
-			document.dispatchEvent(loaded);
+			loaded.initEvent('resize', true, false)
+			document.dispatchEvent(loaded)
 		})
 	)
 });
