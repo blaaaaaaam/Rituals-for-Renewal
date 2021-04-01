@@ -24,7 +24,7 @@ body {
   font: normal clamp(20px, 1.5rem, 32px) 'AuthenticSans', sans-serif;
   color: white;
   text-align: center;
-  --plyr-color-main: ;
+  /* --plyr-color-main: ; */
   --plyr-control-icon-size: 25px;
   --plyr-video-background: rgba(0,0,0,0);
   --plyr-video-controls-background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
