@@ -21,9 +21,10 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   padding: 0 20px;
-  font: normal clamp(20px, 1.5rem, 32px) 'AuthenticSans', sans-serif;
+  font: normal var(--clamp) 'AuthenticSans', sans-serif;
   color: white;
   text-align: center;
+  --clamp: clamp(20px, 1.5rem, 32px);
   --plyr-control-icon-size: 25px;
   --plyr-video-background: rgba(0,0,0,0);
   --plyr-video-controls-background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
@@ -70,7 +71,6 @@ a:hover, .active { opacity: 1 }
   animation: rotate 540s linear infinite;
 }
 .mobile { display: none }
-/* nav li:first-of-type { display: none } */
 
 .content { margin-bottom: 16vh }
 .artist-title {
@@ -108,7 +108,7 @@ figure, figure * { width: 100%; height: auto }
 .button:hover { opacity: .5 }
 .button:focus { outline: none }
 .artist-title .button { margin-top: -.25rem }
-p:not(:last-of-type) { margin-bottom: clamp(20px, 1.5rem, 32px) }
+p:not(:last-of-type) { margin-bottom: var(--clamp) }
 
 .background, .background-gradient {
   position: fixed;
@@ -131,11 +131,9 @@ p:not(:last-of-type) { margin-bottom: clamp(20px, 1.5rem, 32px) }
   html { font-size: 2vw }
   body { margin-top: 100vh }
   .logo { width: 100vw }
-  /* nav li:first-of-type { display: inline-block } */
   main { grid-template-columns: 1fr }
   .content { margin-top: -200vh }
-  /* .intro { margin-bottom: 100vh } */
-  /* section ul { padding-top: 100vh } */
+  section ul { padding-top: 16vh }
   .artist-title:not(.intro .artist-title) > *:not(.artist-title .caption) { display: none }
   .artist-title .caption { display: inline-block!important; z-index: 1; margin-top: 100vh}
   .button { margin: 10px 0 10px; padding: 2px 12px 12px 12px }
@@ -143,13 +141,22 @@ p:not(:last-of-type) { margin-bottom: clamp(20px, 1.5rem, 32px) }
   .button, .caption {
     background:linear-gradient(0deg, rgba(220,220,220,.8) 0%, rgba(240,240,240,.8) 10%, rgba(255,255,255,.8) 100%);
     color:black;
-    border-radius: clamp(20px, 1.5rem, 32px);
+    border-radius: var(--clamp);
   }
 }
 
 @media (max-width:759px) {
-  .artist-title { padding: 40px }
+  .artist-title, .caption { padding: 20px }
   .desktop { display: none }
   .mobile { display: block }
-  section li { margin: 0 40px 16vh 40px }
+  .button { padding: 3px 10px 10px 10px }
+  section li { margin: 0 20px 16vh }
+}
+
+@media (max-width: 680px) {
+  body { --clamp: clamp(15px, 15px, 15px) }
+  .logo { padding: 30px; }
+  .intro .artist-title { padding: 0 30px }
+  .artist-title, .caption { padding: 15px }
+  section li { margin: 0 15px 16vh }
 }
