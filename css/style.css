@@ -61,6 +61,8 @@ a:hover, .active { opacity: 1 }
   left: 0;
   width: 50vw;
   max-height: 100vh;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   margin-top: 50vh;
   transform: translateY(-50%);
 
@@ -118,6 +120,8 @@ p:not(:last-of-type) { margin-bottom: var(--clamp) }
   left: 0;
   width: 100vw;
   height: 100vh;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 .background { z-index: -2; background: linear-gradient(180deg, rgba(193,193,242,1) 0%, rgba(255,183,239,1) 75%, rgba(255,162,164,1) 95%, rgba(255,175,145,1) 100%) }
 .background-gradient { z-index: -2; opacity: 0; transition: opacity 1.5s ease-in-out }
@@ -159,6 +163,7 @@ p:not(:last-of-type) { margin-bottom: var(--clamp) }
   body { --clamp: clamp(15px, 15px, 15px) }
   .logo { padding: 30px; }
   .intro .artist-title { padding: 0 30px }
-  .artist-title, .caption { padding: 15px }
+  .artist-title { padding: 15px }
+  .caption { padding: 20px }
   section li { margin: 0 15px 16vh }
 }
