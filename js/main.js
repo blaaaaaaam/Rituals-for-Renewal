@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		rootMargin: '-24.99% 0px -75% 0px',
 		threshold: 0
 	}
+
 	const observer = new IntersectionObserver(entries => {
 		entries.forEach(entry => {
 			const id = entry.target.getAttribute('id')
@@ -27,7 +28,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.querySelectorAll('section[id]').forEach((section) => {
 		observer.observe(section)
 	});
-
 
 	// Initialise Plyrs
 	const players = Array.from(document.querySelectorAll('.player')).map(
@@ -58,3 +58,12 @@ window.addEventListener('DOMContentLoaded', () => {
 		})
 	)
 });
+
+function toggleCaption(el) {
+	let e = el.nextElementSibling
+	if (getComputedStyle(e).display === 'none') {
+		e.style.display = 'block'
+	} else {
+		e.style.display = 'none'
+	}
+}
