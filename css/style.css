@@ -16,16 +16,14 @@
   font: inherit;
 }
 
-html { font-size: 1vw; height: -webkit-fill-available }
+html { font-size: 1vw }
 body {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-  padding: 0 20px;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   font: normal var(--clamp) 'AuthenticSans', sans-serif;
   color: white;
   text-align: center;
+  overflow-x: hidden;
+
   --clamp: clamp(20px, 1.5rem, 32px);
   --plyr-control-icon-size: 25px;
   --plyr-video-background: rgba(0,0,0,0);
@@ -33,13 +31,15 @@ body {
 }
 
 ul { list-style-type: none }
+a { text-decoration: none; opacity: .5 }
+a:hover, .active { opacity: 1 }
+a, .button { transition: opacity .3s ease-in-out }
 
 main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px,1fr));
-  grid-column-gap: 20px;
+  grid-column-gap: 2rem;
 }
-
 nav {
   position: sticky;
   top: 0;
@@ -48,56 +48,31 @@ nav {
   align-items: center;
   justify-content: center;
 }
-a {
-  text-decoration: none;
-  opacity: .5;
-  transition: opacity .3s ease-in-out;
-}
-a:hover, .active { opacity: 1 }
 .logo {
-  position: fixed;
+  position: absolute;
+  width: 100%;
+  padding: 2rem;
   z-index: -1;
-  top: 0;
-  left: 0;
-  width: 50vw;
-  max-height: 100vh;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-  margin-top: 50vh;
-  transform: translateY(-50%);
-
   pointer-events: none;
   user-select: none;
-  padding: 40px;
 }
-.logo img {
-  max-height: calc(100vh - 80px);
-  animation: rotate 540s linear infinite;
-}
+.logo img { max-height: calc(100vh - 2rem); animation: rotate 540s linear infinite }
 .mobile { display: none }
 
-.content { margin-bottom: 16vh }
-.artist-title {
+.content { margin: 0 20% 16vh 20% }
+.info {
   min-height: 100vh;
-  padding: 16vh 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.caption { display: none }
-section li {
-  position: relative;
-  margin: 0 20% 16vh 20%;
-  list-style: none;
-  padding: 0!important;
-}
+
+.artist li { position: relative; margin: 15vh 0 }
 .carousel { width: auto; margin: 0 auto }
-.carousel * { display: block }
 figure, figure * { width: 100%; height: auto }
 .flickity-viewport { height: 100% }
-.flickity-button:disabled { display: none }
-.flickity-page-dots { display: none }
+.flickity-button:disabled, .flickity-page-dots { display: none }
 .flickity-prev-next-button { width: 30px; height: 30px }
 .plyr--video, .plyr__video-wrapper { background: rgba(0,0,0,0) }
 
@@ -107,12 +82,12 @@ figure, figure * { width: 100%; height: auto }
   margin: .25rem 0 .5rem;
   border: none;
   cursor: pointer;
-  transition: opacity .3s ease-in-out;
 }
 .button:hover { opacity: .5 }
 .button:focus { outline: none }
-.artist-title .button { margin-top: -.25rem }
-p:not(:last-of-type) { margin-bottom: var(--clamp) }
+.info .button { margin-top: -.25rem }
+.caption { display: none }
+.caption p:not(:last-of-type) { margin-bottom: var(--clamp) }
 
 .background, .background-gradient {
   position: fixed;
@@ -120,11 +95,10 @@ p:not(:last-of-type) { margin-bottom: var(--clamp) }
   left: 0;
   width: 100vw;
   height: 100vh;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
+  z-index: -2;
 }
-.background { z-index: -2; background: linear-gradient(180deg, rgba(193,193,242,1) 0%, rgba(255,183,239,1) 75%, rgba(255,162,164,1) 95%, rgba(255,175,145,1) 100%) }
-.background-gradient { z-index: -2; opacity: 0; transition: opacity 1.5s ease-in-out }
+.background { background: linear-gradient(180deg, rgba(193,193,242,1) 0%, rgba(255,183,239,1) 75%, rgba(255,162,164,1) 95%, rgba(255,175,145,1) 100%) }
+.background-gradient { opacity: 0; transition: opacity 1.5s ease-in-out }
 .NicoleMonks-gradient { background: linear-gradient(180deg, rgba(24,154,255,1) 0%, rgba(70,200,255,1) 50%, rgba(247,255,255,1) 90%, rgba(255,230,160,1) 100%) }
 .SabDSouza-gradient { background: linear-gradient(180deg, rgba(255,214,106,1) 0%, rgba(255,142,84,1) 90%, rgba(141,196,250,1) 100%) }
 .OhniBlu-gradient { background: linear-gradient(180deg, rgba(35,128,255,1) 0%, rgba(255,102,208,1) 80%, rgba(255,78,118,1) 90%, rgba(255,131,80,1) 100%) }
@@ -135,35 +109,48 @@ p:not(:last-of-type) { margin-bottom: var(--clamp) }
 
 @media (max-width:959px) {
   html { font-size: 2vw }
-  body { margin-top: 100vh }
-  .logo { width: 100vw }
+  body { margin-top: 200vh }
   main { grid-template-columns: 1fr }
-  .content { margin-top: -200vh }
-  section ul { padding-top: 16vh }
-  .artist-title:not(.intro .artist-title) > *:not(.artist-title .caption) { display: none }
-  .artist-title .caption { display: inline-block!important; z-index: 1; margin-top: 100vh}
-  .button { margin: 10px 0 10px; padding: 2px 12px 12px 12px }
-  .caption { padding: 30px }
-  .button, .caption {
+
+  .logo {
+    position:fixed;
+    top: 0;
+    left: 0;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+  }
+  .content { margin-top: -300vh }
+  .artist .info > *:not(.caption) { display: none }
+  .artist .info .caption {
+    display: inline-block!important;
+    margin-top: 115vh;
+    z-index: 1;
+  }
+  .button, .artist .caption {
     background:linear-gradient(0deg, rgba(220,220,220,.8) 0%, rgba(240,240,240,.8) 10%, rgba(255,255,255,.8) 100%);
-    color:black;
+    color: black;
     border-radius: var(--clamp);
   }
+  .button { margin: 10px 0; padding: 1px 12px 12px }
+  .artist .caption { padding: var(--clamp) }
+
+  .intro .short, .intro .caption {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .intro .button { display: none }
 }
 
 @media (max-width:759px) {
-  .artist-title, .caption { padding: 20px }
+  .content, .intro { margin-left: 3rem; margin-right: 3rem }
   .desktop { display: none }
   .mobile { display: block }
-  .button { padding: 3px 10px 10px 10px }
-  section li { margin: 0 20px 16vh }
 }
 
-@media (max-width: 680px) {
-  body { --clamp: clamp(15px, 15px, 15px) }
-  .logo { padding: 30px; }
-  .intro .artist-title { padding: 0 30px }
-  .artist-title { padding: 15px }
-  .caption { padding: 20px }
-  section li { margin: 0 15px 16vh }
+@media (max-width: 399px) {
+  body { --clamp: 15px }
+  .button { padding: 4px 10px 10px }
 }
