@@ -148,5 +148,5 @@ figure, figure * { width: 100%; height: auto }
 
 @media (max-width: 399px) {
   body { --clamp: 15px }
-  .button { padding: 4px 10px 10px }
+  .artist .button { padding: 4px 10px 10px }
 }
