@@ -1,9 +1,31 @@
 window.addEventListener('DOMContentLoaded', () => {
-
 	// Lazy Load
 	const el = document.querySelectorAll('video')
-	const lozadObserver = lozad(el)
+	const lozadObserver = lozad(el, {
+		rootMargin: '300px 0px'
+	})
 	lozadObserver.observe()
+
+
+	// Initialise Plyrs
+	const players = Array.from(document.querySelectorAll('.player')).map(
+		p => new Plyr(p, {
+			controls:['play'],
+			keyboard:{focused:false,global:false},
+			fullscreen: {enabled: false},
+			clickToPlay: false,
+			autopause: false,
+			hideControls: false,
+		})
+	)
+
+	// Initialise carousels
+	const carousels = Array.from(document.querySelectorAll('.carousel')).map(
+		c => new Flickity(c, {
+			imagesLoaded: true,
+			lazyLoad: true
+		})
+	)
 
 	// Change Background
 	let options = {
@@ -29,32 +51,13 @@ window.addEventListener('DOMContentLoaded', () => {
 		observer.observe(section)
 	});
 
-	// Initialise Plyrs
-	const players = Array.from(document.querySelectorAll('.player')).map(
-		p => new Plyr(p, {
-			controls:['play'],
-			keyboard:{focused:false,global:false},
-			fullscreen: {enabled: false},
-			clickToPlay: false,
-			autopause: false,
-			hideControls: false,
-		})
-	)
-
-	// Initialise carousels
-	const carousels = Array.from(document.querySelectorAll('.carousel')).map(
-		c => new Flickity(c, {
-			imagesLoaded: true,
-			lazyLoad: true
-		})
-	)
-
 	// Fire a resize event to get the height of videos
 	const videos = Array.from(document.querySelectorAll('video')).map(
 		v => v.addEventListener('loadedmetadata', (event) => {
 			let loaded = document.createEvent('HTMLEvents')
 			loaded.initEvent('resize', true, false)
 			document.dispatchEvent(loaded)
+			v.parentElement.parentElement.classList.add('videoLoaded')
 		})
 	)
 });
