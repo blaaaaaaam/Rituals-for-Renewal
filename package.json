@@ -1,0 +1,8 @@
+{
+  "name": "Rituals for Renewal",
+  "author": "Alexander Tanazefti",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "prettier": "2.2.1"
+  }
+}
