@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Rituals for Renewal site",
   "author": "Alexander Tanazefti",
-  "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "prettier": "2.2.1"
-  },
   "scripts": {
     "build": "npx eleventy",
     "serve": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
-  }
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "prettier": "2.2.1"
+  },
 }
