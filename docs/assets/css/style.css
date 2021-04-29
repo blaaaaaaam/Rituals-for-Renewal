@@ -141,7 +141,7 @@ figure, figure * { width: 100%; height: auto }
 }
 
 @media (max-width:759px) {
-  .content, .intro { margin-left: 3rem; margin-right: 3rem }
+  .content, .intro { margin-left: 3.5rem; margin-right: 3.5rem }
   .desktop { display: none }
   .mobile { display: block }
 }
