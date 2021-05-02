@@ -86,7 +86,8 @@ layout: layouts/base.njk
   </div>
 </main>
 <div class="background">
+  <div class="gradient-background"></div>
   {% for artist in collections.artist %}
-  <div class="gradient-background gradient-{{ artist.data.artist }}"></div>
+  <div class="gradient-{{ artist.data.artist }}"></div>
   {% endfor %}
 </div>
