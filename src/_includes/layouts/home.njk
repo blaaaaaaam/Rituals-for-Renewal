@@ -16,7 +16,7 @@ layout: layouts/base.njk
     </div>
   </nav>
   <div class="content">
-    <section class="intro">
+    <section class="intro" id="background">
       <div class="info">
         <div class="short">
           {{ short | safe }}
@@ -28,7 +28,7 @@ layout: layouts/base.njk
       </div>
     </section>
     {% for artist in collections.artist %}
-    <section class="artist {{ artist.data.artist }}" id="{{ artist.data.artist }}" data-gradient="{{ artist.data.artist }}-gradient">
+    <section class="artist {{ artist.data.artist }}" id="{{ artist.data.artist }}">
       <div class="info">
         <h1>{{ artist.data.title }}</h1>
         {% if artist.data.instagram|length %}
@@ -87,6 +87,6 @@ layout: layouts/base.njk
 </main>
 <div class="background">
   {% for artist in collections.artist %}
-  <div class="background-gradient {{ artist.data.artist }}-gradient"></div>
+  <div class="gradient-background gradient-{{ artist.data.artist }}"></div>
   {% endfor %}
 </div>

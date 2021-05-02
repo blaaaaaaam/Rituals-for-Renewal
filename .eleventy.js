@@ -1,8 +1,9 @@
-const path = require("path");
-const prettier = require("prettier");
+const path = require('path');
+const prettier = require('prettier');
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy('src/assets');
+  eleventyConfig.addPassthroughCopy('CNAME');
 
   eleventyConfig.addLayoutAlias('artist', 'layouts/artist.njk');
   eleventyConfig.addLayoutAlias('post', 'layouts/post.njk');
@@ -14,10 +15,10 @@ module.exports = function(eleventyConfig) {
     'mp4'
   ]);
 
-  eleventyConfig.addTransform("prettier", function (content, outputPath) {
+  eleventyConfig.addTransform('prettier', function (content, outputPath) {
     const extname = path.extname(outputPath);
     switch (extname) {
-      case ".html":
+      case '.html':
         // Strip leading period from extension and use as the Prettier parser.
         const parser = extname.replace(/^./, "");
         return prettier.format(content, { parser });
@@ -28,15 +29,15 @@ module.exports = function(eleventyConfig) {
   });
 
   return {
-    markdownTemplateEngine: "liquid",
-    htmlTemplateEngine: "njk",
-    dataTemplateEngine: "njk",
+    markdownTemplateEngine: 'liquid',
+    htmlTemplateEngine: 'njk',
+    dataTemplateEngine: 'njk',
 
     dir: {
-      input: "src",
-      includes: "_includes",
-      data: "_data",
-      output: "docs"
+      input: 'src',
+      includes: '_includes',
+      data: '_data',
+      output: 'docs'
     }
   };
 }

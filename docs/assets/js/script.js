@@ -36,13 +36,16 @@ window.addEventListener('DOMContentLoaded', () => {
 	const observer = new IntersectionObserver(entries => {
 		entries.forEach(entry => {
 			const id = entry.target.getAttribute('id')
-			const gradient = entry.target.dataset.gradient
+			const active = document.querySelector(`nav li a[href="#${id}"]`)
+			const gradient = document.getElementsByClassName('gradient-' + id)[0]
+			const favicon = document.getElementById('favicon')
 			if (entry.intersectionRatio > 0) {
-				document.querySelector(`nav li a[href="#${id}"]`).classList.add('active')
-				document.getElementsByClassName(gradient)[0].style.opacity = 1
+				id != 'background' ? active.classList.add('active') : void 0
+				gradient.style.opacity = 1
+				favicon.setAttribute('href','/assets/img/favicon_'+ id + '.png')
 			} else {
-				document.querySelector(`nav li a[href="#${id}"]`).classList.remove('active')
-				document.getElementsByClassName(gradient)[0].style.opacity = 0
+				id != 'background' ? active.classList.remove('active') : void 0
+				gradient.style.opacity = 0
 			}
 		})
 	},options)
