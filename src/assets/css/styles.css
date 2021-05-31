@@ -125,17 +125,16 @@ figure, figure * { width: 100%; height: auto }
     transform: translateY(-50%);
   }
   .content { margin-top: -200vh }
-  .artist .info > *:not(.caption) { display: none }
-  .artist .info .caption {
-    display: inline-block!important;
-    margin-top: 115vh;
-    z-index: 1;
-  }
-  .artist .button, .artist .caption {
+  .intro { margin-bottom: 75vh }
+  .artist .info { padding-top: 75vh }
+  .artist h1, .artist .button, .artist .caption {
     background:linear-gradient(0deg, rgba(220,220,220,.8) 0%, rgba(240,240,240,.8) 10%, rgba(255,255,255,.8) 100%);
     color: black;
     border-radius: var(--clamp);
+    z-index: 20;
   }
+  .artist h1 { padding: 11px 15px 8px }
+  .artist h1, .artist .button { display: inline-block; float:left }
   .artist .button { margin: 10px 0; padding: 1px 12px 12px }
   .artist .caption { padding: var(--clamp) }
 }
